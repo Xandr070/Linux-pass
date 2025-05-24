@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/main :: head}">
+    <title id="pageTitle">Редактировать автора</title>
+</head>
+<body>
+    <div id="content">
+        <h1>Редактировать автора</h1>
+        
+        <form th:action="@{/web/authors/edit/{id}(id=${author.id})}" th:object="${author}" method="post" class="mt-4">
+            <input type="hidden" th:field="*{id}">
+            
+            <div class="mb-3">
+                <label for="name" class="form-label">Имя</label>
+                <input type="text" class="form-control" id="name" th:field="*{name}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="birthYear" class="form-label">Год рождения</label>
+                <input type="number" class="form-control" id="birthYear" th:field="*{birthYear}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="country" class="form-label">Страна</label>
+                <input type="text" class="form-control" id="country" th:field="*{country}" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            <a href="/web/authors" class="btn btn-secondary">Отмена</a>
+        </form>
+    </div>
+</body>
+</html> 
